@@ -20,7 +20,7 @@ public class ApothicairesApplication implements CommandLineRunner {
 		try {
 			System.out.println("Hello World");
 		} catch (Exception e) {
-			System.out.println("Ca fonctionne pas");
+			System.out.println("Ca ne démarre pas");
 			throw new Exception("I am Exception Alpha!");
 		}
 	}
