@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,7 +15,7 @@ import java.util.List;
 public class Tatouage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer tatouage_id;
 
     @Column(name="title")
     private String title;
@@ -22,8 +23,44 @@ public class Tatouage {
     @Column(name="description")
     private String description;
 
-    @Column(name="photos")
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tatouage")
-    private List<Photo> photos;
+    public Integer getTatouage_id() {
+        return tatouage_id;
+    }
+
+    public void setTatouage_id(Integer tatouage_id) {
+        this.tatouage_id = tatouage_id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "photo_id")
+    List<Photo> photos = new ArrayList<>();
 
 }
