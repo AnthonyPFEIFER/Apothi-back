@@ -23,6 +23,18 @@ public class Tatouage {
     @Column(name="description")
     private String description;
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "tatouage_id")
+    List<Photo> photos = new ArrayList<>();
+
+
+
+
+
     public Integer getTatouage_id() {
         return tatouage_id;
     }
@@ -55,12 +67,5 @@ public class Tatouage {
         this.photos = photos;
     }
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER
-    )
-    @JoinColumn(name = "photo_id")
-    List<Photo> photos = new ArrayList<>();
 
 }

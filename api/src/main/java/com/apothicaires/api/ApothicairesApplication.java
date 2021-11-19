@@ -31,20 +31,17 @@ public class ApothicairesApplication implements CommandLineRunner {
 
 		try {
 			System.out.println("Hello World");
+
 			Iterable<Tatouage> tatouages = tatouageService.getTatouages();
 			tatouages.forEach(tatouage -> System.out.println(tatouage.getTatouage_id() + " " + tatouage.getDescription()));
-
-
+			
 			Iterable<Photo> photos = photoService.getPhotos();
-
 
 			Optional<Tatouage> tatouageId = tatouageService.getTatouageById(2);
 			Tatouage tatouage = tatouageId.get();
-			System.out.println(tatouage);
 			tatouage.getPhotos().forEach(
 					photo -> System.out.println(photo.getName())
 			);
-/*			tatouage.getPhotos().forEach(photo -> System.out.println(photo.getName()));*/
 
 		} catch (Exception e) {
 			System.out.println("Ca ne fonctionne pas");
