@@ -18,8 +18,8 @@ public class TatouageController {
     private TatouageService tatouageService;
 
     /**
-     * Read - Get all billionaires
-     * @return - An Iterable object of Billionaire full filled
+     * Read - Get all tatouages
+     * @return - An Iterable object of tatouages full filled
      */
     @GetMapping("/tatouages")
     @ResponseStatus(HttpStatus.OK)
