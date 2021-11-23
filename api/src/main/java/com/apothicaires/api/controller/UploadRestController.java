@@ -26,7 +26,6 @@ public class UploadRestController implements ServletContextAware {
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public ResponseEntity<Void> upload(@RequestParam("files") MultipartFile[] files) {
         try {
-            System.out.println("File List");
             for (MultipartFile file : files) {
                 System.out.println("File name: " + file.getOriginalFilename());
                 System.out.println("File size: " + file.getSize());
@@ -46,10 +45,8 @@ public class UploadRestController implements ServletContextAware {
             String newFileName = simpleDateFormat.format(new Date()) + file.getOriginalFilename();
             byte[] bytes = file.getBytes();
             Path path = Paths.get(this.servletContext.getRealPath("/uploads/images/" + newFileName));
-            System.out.println(path + " is path and ce sera le nom " + newFileName);
-            System.out.println("Step 1!");
             Files.write(path, bytes);
-            System.out.println("Step 2!");
+            System.out.println("Successfully uploaded " + newFileName + " !");
             return newFileName;
         } catch (Exception e) {
             return null;
