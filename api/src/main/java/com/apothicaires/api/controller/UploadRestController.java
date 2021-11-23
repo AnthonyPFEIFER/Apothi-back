@@ -1,5 +1,13 @@
 package com.apothicaires.api.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletContext;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 @RestController
-@RequestMapping("/api/demo")
+@RequestMapping("/api/files")
 public class UploadRestController implements ServletContextAware {
 
     private ServletContext servletContext;
@@ -49,7 +49,6 @@ public class UploadRestController implements ServletContextAware {
             System.out.println(path + " is path and ce sera le nom " + newFileName);
             System.out.println("Step 1!");
             Files.write(path, bytes);
-
             System.out.println("Step 2!");
             return newFileName;
         } catch (Exception e) {
