@@ -34,7 +34,7 @@ public class ApothicairesApplication implements CommandLineRunner {
 
 			Iterable<Tatouage> tatouages = tatouageService.getTatouages();
 			tatouages.forEach(tatouage -> System.out.println(tatouage.getTatouage_id() + " " + tatouage.getDescription()));
-			
+
 			Iterable<Photo> photos = photoService.getPhotos();
 
 			Optional<Tatouage> tatouageId = tatouageService.getTatouageById(2);

@@ -9,11 +9,11 @@ public class FileUploadController {
 
     public static String uploadDirectory = System.getProperty("user.dir") + "/uploads";
 
-    @RequestMapping("/")
+/*    @RequestMapping("/")
     public String UploadPage(Tatouage tatouage) {
 //        new File(FileUploadController.uploadDirectory).mkdir();
 
-    }
+    }*/
 
 
 }
