@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+
 import com.apothicaires.api.model.Tatouage;
 import com.apothicaires.api.service.TatouageService;
 
