@@ -34,3 +34,4 @@ build/
 
 ### Personnal ignore ###
 src/main/webapp/
+config/
