@@ -3,6 +3,7 @@ package com.apothicaires.api.model;
 import javax.persistence.*;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

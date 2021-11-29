@@ -8,12 +8,15 @@ import java.util.Date;
 
 import javax.servlet.ServletContext;
 
+import com.apothicaires.api.model.Photo;
+import com.apothicaires.api.model.Tatouage;
+import com.apothicaires.api.service.PhotoService;
+import com.apothicaires.api.service.TatouageService;
+import com.apothicaires.api.service.UploadService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +25,13 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadRestController implements ServletContextAware {
 
     private ServletContext servletContext;
+
+    @Autowired
+    PhotoService photoService;
+    @Autowired
+    TatouageService tatouageService;
+    @Autowired
+    UploadService uploadService;
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public ResponseEntity<Void> upload(@RequestParam("files") MultipartFile[] files) {
@@ -52,6 +62,13 @@ public class UploadRestController implements ServletContextAware {
             return null;
         }
     }
+
+    @PostMapping("/test")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Tatouage mutipleCreate(@RequestParam("photo") Photo photo, @RequestParam("tatouage") Tatouage tatouage) {
+           return this.uploadService.multipleCreate(photo, tatouage);
+    }
+
 
     @Override
     public void setServletContext(ServletContext servletContext) {
