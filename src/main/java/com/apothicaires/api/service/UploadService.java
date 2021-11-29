@@ -14,10 +14,10 @@ public class UploadService {
 
     public Tatouage multipleCreate(Photo photo, Tatouage tatouage){
         Tatouage generatedTatouage = this.tatouageService.createNewTatouage(tatouage);
-        Integer idGenerated = generatedTatouage.getTatouage_id();
-        Photo photoWithId = photo;
-        photo.setTatouage_id(idGenerated);
-        this.photoService.createNewPhoto(photoWithId);
+//        Integer idGenerated = generatedTatouage.getTatouage_id();
+//        Photo photoWithId = photo;
+        photo.setTatouage(tatouage);
+        this.photoService.createNewPhoto(photo);
         return generatedTatouage;
     }
 }

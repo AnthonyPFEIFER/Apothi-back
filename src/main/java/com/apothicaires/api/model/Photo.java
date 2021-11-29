@@ -20,10 +20,13 @@ public class Photo implements Serializable {
     private Integer photo_id;
     private String type;
     private String name;
-    private Integer tatouage_id;
     @Lob
     @Column(name = "file_data")
     private byte[] fileData;
 
+    @ManyToOne
+    private Tatouage tatouage;
+
+    //     private Integer tatouage_id;
 
 }
