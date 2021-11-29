@@ -4,12 +4,16 @@ import javax.persistence.*;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "tatouages")
 
 public class Tatouage {
@@ -26,46 +30,18 @@ public class Tatouage {
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.EAGER
+            fetch = FetchType.EAGER,
+            mappedBy = "tatouage_id"
     )
-    @JoinColumn(name = "tatouage_id")
+ //   @JoinColumn(name = "tatouage_id")
     List<Photo> photos = new ArrayList<>();
 
 
-
-
-
-    public Integer getTatouage_id() {
-        return tatouage_id;
+    public void addPhoto(Photo photo){
+        photos.add(photo);
     }
 
-    public void setTatouage_id(Integer tatouage_id) {
-        this.tatouage_id = tatouage_id;
-    }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
-    }
 
 
 }
