@@ -12,7 +12,6 @@ import com.apothicaires.api.model.Photo;
 import com.apothicaires.api.model.Tatouage;
 import com.apothicaires.api.service.PhotoService;
 import com.apothicaires.api.service.TatouageService;
-import com.apothicaires.api.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +29,6 @@ public class UploadRestController implements ServletContextAware {
     PhotoService photoService;
     @Autowired
     TatouageService tatouageService;
-    @Autowired
-    UploadService uploadService;
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public ResponseEntity<Void> upload(@RequestParam("files") MultipartFile[] files) {
@@ -61,12 +58,6 @@ public class UploadRestController implements ServletContextAware {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    @PostMapping("/test")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Tatouage mutipleCreate(@RequestParam("photo") Photo photo, @RequestParam("tatouage") Tatouage tatouage) {
-           return this.uploadService.multipleCreate(photo, tatouage);
     }
 
 

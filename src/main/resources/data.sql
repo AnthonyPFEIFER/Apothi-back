@@ -17,13 +17,14 @@ CREATE TABLE photos (
                            photo_id INT AUTO_INCREMENT  PRIMARY KEY,
                            type VARCHAR(250) NOT NULL,
                            name VARCHAR(250) NOT NULL,
+                           tatouage_id INT NOT NULL,
                            file_data BLOB
 );
 
-INSERT INTO photos(type, name, file_data) VALUES
-    ('noir et blanc', 'photo1', null),
-    ('noir et blanc', 'photo2', null),
-    ('en couleur', 'photo3',  null);
+INSERT INTO photos(type, name, tatouage_id, file_data) VALUES
+    ('noir et blanc', 'photo1', 1, null),
+    ('noir et blanc', 'photo2', 2, null),
+    ('en couleur', 'photo3', 2, null);
 
 /*
 ,
