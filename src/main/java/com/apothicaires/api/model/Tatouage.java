@@ -29,15 +29,19 @@ public class Tatouage {
     @Column(name="description")
     private String description;
 
-    @OneToMany
-/*            (
+    @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.EAGER
-    )*/
-    private Set<Photo> photos;
+            fetch = FetchType.EAGER,
+            mappedBy = "tatouage_id"
+    )
+ //   @JoinColumn(name = "tatouage_id")
+    List<Photo> photos = new ArrayList<>();
 
-//    @JoinColumn(name = "tatouage_id")
-//    List<Photo> photos = new ArrayList<>();
+
+    public void addPhoto(Photo photo){
+        photos.add(photo);
+    }
+
 
 }
