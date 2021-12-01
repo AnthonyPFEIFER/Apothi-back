@@ -18,13 +18,13 @@ CREATE TABLE photos (
                            type VARCHAR(250) NOT NULL,
                            name VARCHAR(250) NOT NULL,
                            tatouage_id INT NOT NULL,
-                           file_data BLOB
+                           path VARCHAR(250)
 );
 
-INSERT INTO photos(type, name, tatouage_id, file_data) VALUES
-    ('noir et blanc', 'photo1', 1, null),
-    ('noir et blanc', 'photo2', 2, null),
-    ('en couleur', 'photo3', 2, null);
+INSERT INTO photos(type, name, tatouage_id) VALUES
+    ('noir et blanc', 'photo1', 1),
+    ('noir et blanc', 'photo2', 2),
+    ('en couleur', 'photo3', 2);
 
 /*
 ,

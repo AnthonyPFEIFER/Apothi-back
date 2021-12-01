@@ -48,12 +48,18 @@ public class UploadRestController implements ServletContextAware {
 
     private String save(MultipartFile file) {
         try {
+            Photo photo = new Photo();
+
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyyyyHHmmss");
             String newFileName = simpleDateFormat.format(new Date()) + file.getOriginalFilename();
-            byte[] bytes = file.getBytes();
             Path path = Paths.get(this.servletContext.getRealPath("/uploads/images/" + newFileName));
-            Files.write(path, bytes);
+//            Files.write(file.getBytes());
+            Files.createFile(path);
             System.out.println("Successfully uploaded " + newFileName + " !");
+            photo.setType(file.getContentType());
+            photo.setPath(path.toFile().getAbsolutePath());
+            photo.setName(newFileName);
+            System.out.println("photo uploaded " + photo + " !");
             return newFileName;
         } catch (Exception e) {
             return null;

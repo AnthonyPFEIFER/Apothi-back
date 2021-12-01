@@ -28,9 +28,6 @@ public class Photo implements Serializable {
 //    private Tatouage tatouage;
 
 
-    @Lob
-    @Column(name = "file_data")
-    private byte[] fileData;
-
+    private String path;
 
 }
